@@ -1,0 +1,96 @@
+$ps //Process identifier qui t'appartiennent
+$ps -aef // affiche tous les processus qui tournent dans la machine
+$ps aux // informations plus détaillées des processus
+
+
+créer un processus : 
+programme ls, cré un processus pour ce porgramme et lui donne la main puis rend la main au processus qui gere le terminal : shell
+
+début de vie, vie, fin de vie
+
+$cd 1_fork/
+appel système fork 
+
+fork1.c :
+
+processus père, processus fils
+norme unix : fils meurent avant leur père
+père peux créer autant de processus fils qu'ils veulent, le processus fils s'execute puis meurt en prévenant le processus père
+
+init PID 1
+
+pid t_pid // numero contenant un numero de PID
+
+appel système fork
+
+exemple : 
+processus PID
+fork()
+-----------------------------------------
+      !                          !
+processus PID            processus fils PID' PPID
+pid  = fork()	     	 pid' = fork()
+pid '				     0
+
+si return 0 ou != 0 on sait dans quelle partie du progrramme on va 
+executer.
+tester le return du fils pour savoir si on est dans le fils
+
+j'attend la mort de mon fils : wait(&rv) bloquant en renvoyant son return 
+
+switch(pid =frok())
+case -1 //probleme
+case 0 //printf(return fork())
+getppID
+getpid
+
+faire communiquer deux processus directement ?
+
+
+---------              ----------
+   père			         fils
+
+
+			----------
+			   unix
+
+IPC : inter process communication
+
+pipe unix : 
+
+0 stdin
+1 stdout
+1 stderr
+
+
+!  pipe 2    !         !  pipe 2    !            
+!			 !	       !			!			
+!  pfds[2]   !         !  pfds[2]   ! 
+!  bof[30]   !         !  bof[30]   !
+!            !         !            !
+!  pipe(pfds)!         !  pipe(pfds)!
+
+		1    0                 1    0 
+		!	 !                !     !
+		!    !<--------------------->  
+		! <-------------!-----!
+		!               !
+		 ---->  0     1 -
+				  UNIX
+
+
+
+
+-------------------------------------------------------------------------
+utilisation des signaux 
+
+
+
+
+
+
+
+
+
+
+
